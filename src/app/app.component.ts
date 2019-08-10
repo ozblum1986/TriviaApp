@@ -11,6 +11,7 @@ export class AppComponent {
     QNAData;
     currentElem;
     currQuestionNUmber = 1;
+    questionsNumber;
     isAnswerPressed = [false,false,false,false];
     img = "";
     answerChosen;
@@ -19,6 +20,7 @@ export class AppComponent {
     answerSubmitted = false;
     scrambleAnswers = [];
     isRightAnswer = false;
+    questionText;
     rightAudio = new Audio();
     wrongAudio = new Audio();
 
@@ -29,7 +31,9 @@ export class AppComponent {
         dataService.getQNAData()
         .subscribe((data) => {
             this.QNAData = data.body.results;
+            this.questionsNumber = this.QNAData.length;
             this.currentElem = this.QNAData[this.currQuestionNUmber - 1];
+            this.questionText = this.currentElem.question;
             this.scrambleAllAnswers();
         },
         (err) => {
@@ -60,23 +64,38 @@ export class AppComponent {
         this.isAnswerPressed = $event;
     }
 
+    public initVars() {
+        this.buttonText = "OK";
+        this.pressedOk = false;
+        this.answerSubmitted = false;
+        this.isAnswerPressed = [false,false,false,false];
+    }
+
     public submitAnswer() {
         if(!this.hasPressedAnswer())
             return;
 
-        if(this.answerSubmitted && this.currQuestionNUmber === this.QNAData.length) {
-            this.buttonText = "Game Over";
-            return;
+        if(this.answerSubmitted && this.currQuestionNUmber === this.questionsNumber) {
+            this.dataService.getQNAData()
+            .subscribe((data) => {
+                this.QNAData = data.body.results;
+                this.questionsNumber = this.QNAData.length;
+                this.currQuestionNUmber = 1;
+                this.currentElem = this.QNAData[this.currQuestionNUmber - 1];
+                this.scrambleAllAnswers();
+                this.initVars();
+            },
+            (err) => {
+                return err;
+            });
         }
 
         if(this.answerSubmitted) {
             this.currQuestionNUmber++;
             this.currentElem = this.QNAData[this.currQuestionNUmber - 1];
+            this.questionText = this.currentElem.question;
             this.scrambleAllAnswers();
-            this.pressedOk = false;
-            this.buttonText = "OK";
-            this.answerSubmitted = false;
-            this.isAnswerPressed = [false,false,false,false];
+            this.initVars();
         } else {
             this.pressedOk = true;
             
@@ -93,7 +112,7 @@ export class AppComponent {
             }
             
             this.img = this.isRightAnswer ? "assets/Group.png" : "assets/Group3.png";
-            this.buttonText = "Continue";
+            this.buttonText = (this.currQuestionNUmber === this.questionsNumber) ? "Restart" : "Continue";
             this.answerSubmitted = true;
         }
     }

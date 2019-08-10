@@ -6,7 +6,7 @@
     
     <div class="question">
         <span class="Qclass" innerHTML="Q:{{currQuestionNUmber}}  "></span>
-        <span class="QTextclass" innerHTML="{{currentElem.question}}"></span>
+        <span class="QTextclass" innerHTML="{{questionText}}"></span>
     </div>
     
     <div class='container'>
@@ -20,7 +20,7 @@
     </div>
     
     <div class="questionsCountContainer">
-        <div [ngClass]="x < currQuestionNUmber ? 'dotFilled' : 'dotEmpty'" class="dots" *ngFor="let dummy of ' '.repeat(QNAData.length).split(''), let x = index"></div>
+        <div [ngClass]="x < currQuestionNUmber ? 'dotFilled' : 'dotEmpty'" class="dots" *ngFor="let dot of ' '.repeat(questionsNumber).split(''), let x = index"></div>
     </div>
     
     <div class="bottomImg">
