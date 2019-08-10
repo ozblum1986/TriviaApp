@@ -19,7 +19,6 @@ export class AppComponent {
     answerSubmitted = false;
     scrambleAnswers = [];
     isRightAnswer = false;
-    rightAnswers = 0;
     rightAudio = new Audio();
     wrongAudio = new Audio();
 
@@ -65,6 +64,11 @@ export class AppComponent {
         if(!this.hasPressedAnswer())
             return;
 
+        if(this.answerSubmitted && this.currQuestionNUmber === this.QNAData.length) {
+            this.buttonText = "Game Over";
+            return;
+        }
+
         if(this.answerSubmitted) {
             this.currQuestionNUmber++;
             this.currentElem = this.QNAData[this.currQuestionNUmber - 1];
@@ -77,7 +81,6 @@ export class AppComponent {
             this.pressedOk = true;
             
             if(this.answerChosen === this.currentElem.correct_answer) {
-                this.rightAnswers++;
                 this.isRightAnswer = true;
                 this.rightAudio.load();
                 this.rightAudio.play();
