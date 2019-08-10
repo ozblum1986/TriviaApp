@@ -1,0 +1,29 @@
+<div class="appContainer">
+    <div class="topImgContainer">
+        <img class="headerImg rotateImg" src="assets/Group5.png"/>
+        <img class="textImg" src="assets/Group4.png"/>
+    </div>
+    
+    <div class="question">
+        <span class="Qclass" innerHTML="Q:{{currQuestionNUmber}}  "></span>
+        <span class="QTextclass" innerHTML="{{currentElem.question}}"></span>
+    </div>
+    
+    <div class='container'>
+        <app-rectangle-component class="rectangleClass" *ngFor="let answer of scrambleAnswers, let i = index" [ngClass]="isAnswerPressed[i] ? 'recPressed' : 'recUnpressed'" (updateIsAnswerPressed)="updateIsAnswerPressed($event)" (updateAnswerChosen)="updateAnswerChosen($event)" [answerChosen]="answerChosen" [img]="img" [isAnswerPressed]="isAnswerPressed" [answerText]="answer" [pressedOk]="pressedOk" [answerIndex]="i" [showImg]="isAnswerPressed[i]" [isRightAnswer]=isRightAnswer></app-rectangle-component>
+    </div>
+    
+    <div class="submitContainer">
+        <div (click)="submitAnswer()" class="ellipse" [ngClass]="hasPressedAnswer() ? 'answerPressedColor' : 'answerUnpressedColor'">
+            <div class="buttonText">{{buttonText}}</div>
+        </div>
+    </div>
+    
+    <div class="questionsCountContainer">
+        <div [ngClass]="x < currQuestionNUmber ? 'dotFilled' : 'dotEmpty'" class="dots" *ngFor="let dummy of ' '.repeat(QNAData.length).split(''), let x = index"></div>
+    </div>
+    
+    <div class="bottomImg">
+        <img class="headerImg" src="assets/Group5.png"/>
+    </div>            
+</div>

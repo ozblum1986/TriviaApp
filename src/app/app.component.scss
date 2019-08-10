@@ -1,0 +1,133 @@
+.container {
+    text-align: center;
+    margin-top: 1%;
+    width: 90%;
+    height: 350px;
+    margin: 0 auto;
+}
+
+.submitContainer {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-top: -0.5%;
+}
+
+.questionsCountContainer {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin-top: 3%;
+}
+
+.question {
+    font-family: 'Open Sans', Arial, sans-serif;
+    text-align: center;
+    color: #223336;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+
+app-rectangle-component:hover {
+    box-shadow: 1px 7px 5px 7px #F0F0F0;
+    border-radius: 23px;
+}
+
+app-rectangle-component {
+    display: inline-block;
+    height: 37%;
+    width: 39%;
+    margin: 15px;
+}
+
+.ellipse {
+    width: 17%;
+    height: 40px;
+    border-radius: 100px;
+    display: inline-block;
+}
+
+.recUnpressed {
+    color: #496472;
+}
+
+.recPressed {
+    color: #0D7BAB;
+    // border-color: #0D7BAB;
+    // border-width: 4px;
+}
+
+.answerUnpressedColor {
+    background-color: #F0F0F0;
+}
+
+.answerPressedColor {
+    background-color: #FF8F48;
+}
+
+.answerPressedColor:hover {
+  background-color: #F68034;
+}
+
+.buttonText {
+    color: #FFFFFF;
+    font-family: 'Open Sans Semibold', sans-serif;
+    padding: 5%;
+}
+
+.dots {
+  width: 10px;
+  height: 10px;
+  border-radius: 23px;
+  display: inline-block;
+  margin: 0.5%;
+}
+
+.dotEmpty {
+    background-color: #C9CFD3;
+}
+
+.dotFilled {
+    background-color: #0D7BAB;
+}
+
+.bottomImg {
+    text-align: center;   
+    margin-top: 1.8%;
+    left: 0px;
+}
+
+.topImgContainer {  
+    // margin-top: -5px;
+    top: 0px;
+    left: 0px;
+}
+
+.rotateImg {
+    transform: rotate(180deg);
+}
+
+.headerImg {
+    display: inline-block;
+    width: 100%;
+    height: 78px;
+}
+
+.Qclass {
+    color:#0D7BAB;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 32px;
+    font-weight: bold
+}
+
+.QTextclass {
+    color:#223336;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+}
+
+.textImg {
+    position: absolute;
+    top: 10px;
+    left: 37%;
+}

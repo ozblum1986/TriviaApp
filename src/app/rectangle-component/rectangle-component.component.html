@@ -1,0 +1,10 @@
+<div [ngClass]="{answeredRight:(pressedOk && isRightAnswer && showImg), answeredWrong: (pressedOk && !isRightAnswer && showImg), recSelected: isAnswerPressed[answerIndex]&& !pressedOk}" class="rectangle" (click)="updatePressedStatus($event)">
+    <div class="answerBlock">
+        <div class="imgContainer">
+            <img [ngClass]="{imgElem:(showImg && pressedOk)}" [hidden]="!pressedOk || !showImg" [src]="img"/>
+        </div>
+        <div class="asnwerContainer">
+            <div class="textDiv" innerHTML="{{answerText}}"></div>
+        </div>
+    </div>
+</div>
