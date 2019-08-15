@@ -28,8 +28,18 @@
     margin-bottom: 2%;
 }
 
+.answeredRight {
+    border-color: #33C933;
+    border-width: 4px;
+}
+
+.answeredWrong {
+    border-color: #FB4343;
+    border-width: 4px;
+}
+
 app-rectangle-component:hover {
-    box-shadow: 1px 7px 5px 7px #F0F0F0;
+    box-shadow: 1px 4px 10px 4px #F0F0F0;
     border-radius: 23px;
 }
 
@@ -38,6 +48,9 @@ app-rectangle-component {
     height: 37%;
     width: 39%;
     margin: 15px;
+    border-radius: 23px;
+    border: 2px #d9e6eb solid;
+    border-width: 2px;
 }
 
 .ellipse {
@@ -53,6 +66,12 @@ app-rectangle-component {
 
 .recPressed {
     color: #0D7BAB;
+}
+
+.recSelected {
+    border-color: #0D7BAB;
+    border-width: 4px;
+    border: solid;
 }
 
 .answerUnpressedColor {

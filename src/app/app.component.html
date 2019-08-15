@@ -10,7 +10,7 @@
     </div>
     
     <div class='container'>
-        <app-rectangle-component class="rectangleClass" *ngFor="let answer of scrambleAnswers, let i = index" [ngClass]="isAnswerPressed[i] ? 'recPressed' : 'recUnpressed'" (updateIsAnswerPressed)="updateIsAnswerPressed($event)" (updateAnswerChosen)="updateAnswerChosen($event)" [answerChosen]="answerChosen" [img]="img" [isAnswerPressed]="isAnswerPressed" [answerText]="answer" [pressedOk]="pressedOk" [answerIndex]="i" [showImg]="isAnswerPressed[i]" [isRightAnswer]=isRightAnswer></app-rectangle-component>
+        <app-rectangle-component *ngFor="let answer of scrambleAnswers, let i = index" (click)="updatePressedStatus($event,i)" class="rectangleClass" [ngClass]="{answeredRight:(pressedOk && isRightAnswer && answerPressed == i), answeredWrong: (pressedOk && !isRightAnswer && answerPressed == i) , recPressed: answerPressed == i, recUnpressed: answerPressed != i, recSelected: (answerPressed == i && !pressedOk)}" [img]="img" [answerText]="answer" [pressedOk]="pressedOk" [showImg]="answerPressed == i"></app-rectangle-component>
     </div>
     
     <div class="submitContainer">

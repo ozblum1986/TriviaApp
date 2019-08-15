@@ -2,27 +2,10 @@
     display: inline-block;
     height: 100%;
     width: 100%;
-    border: 2px #d9e6eb solid;
-    border-radius: 23px;
-    border-width: 2px;
     background-color: #fafafa;
     font-family: 'Open Sans Semibold', Arial, sans-serif;
     font-size: 28px;
-}
-
-.answeredRight {
-    border-color: #33C933;
-    border-width: 2px;
-}
-
-.answeredWrong {
-    border-color: #FB4343;
-    border-width: 2px;
-}
-
-.recSelected {
-    border-color: #0D7BAB;
-    border-width: 4px;
+    border-radius: 23px;
 }
 
 .imgContainer {
@@ -39,6 +22,7 @@
     vertical-align: middle;
     height: 100%;
     width: 50%;
+    border-radius: 23px;
 }
 
 .answerBlock {

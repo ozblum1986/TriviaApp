@@ -12,7 +12,7 @@ export class AppComponent {
     currentElem;
     currQuestionNUmber = 1;
     questionsNumber;
-    isAnswerPressed = [false,false,false,false];
+    answerPressed = -1;
     img = "";
     answerChosen;
     pressedOk = false;
@@ -53,22 +53,22 @@ export class AppComponent {
     }
 
     public hasPressedAnswer() {
-        return this.isAnswerPressed[0] || this.isAnswerPressed[1] || this.isAnswerPressed[2] || this.isAnswerPressed[3];
+        return this.answerPressed != -1;
     }
 
-    updateAnswerChosen($event) {
-        this.answerChosen = $event;
-    }
-
-    updateIsAnswerPressed($event) {
-        this.isAnswerPressed = $event;
+    public updatePressedStatus(event,i) {
+        if(this.pressedOk)
+          return;
+        
+        this.answerChosen = event.currentTarget.innerText;
+        this.answerPressed = i;
     }
 
     public initVars() {
         this.buttonText = "OK";
         this.pressedOk = false;
         this.answerSubmitted = false;
-        this.isAnswerPressed = [false,false,false,false];
+        this.answerPressed = -1;
     }
 
     public submitAnswer() {
@@ -88,9 +88,7 @@ export class AppComponent {
             (err) => {
                 return err;
             });
-        }
-
-        if(this.answerSubmitted) {
+        } else if(this.answerSubmitted) {
             this.currQuestionNUmber++;
             this.currentElem = this.QNAData[this.currQuestionNUmber - 1];
             this.questionText = this.currentElem.question;
